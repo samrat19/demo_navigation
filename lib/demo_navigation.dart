@@ -30,11 +30,11 @@ class _DemoNavigationState extends State<DemoNavigation> {
     return WillPopScope(
         onWillPop: () async {
           print('current index: ${handleTitle.currentIndex}');
-          if (handleTitle.currentIndex != 0) {
-            handleTitle.changeIndex(0);
+          if (handleTitle.currentIndex != 2) {
+            handleTitle.changeIndex(2);
             return Future.value(false);
-          } else if (handleTitle.currentIndex == 0) {
-            handleTitle.changeIndex(0);
+          } else if (handleTitle.currentIndex == 2) {
+            handleTitle.changeIndex(2);
             if (handleTitle.widgets.length > 1) {
               handleTitle.moveBackWard();
               return Future.value(false);
@@ -98,8 +98,9 @@ class _DemoNavigationState extends State<DemoNavigation> {
                     alignment: Alignment.bottomCenter,
                     child: Padding(
                       padding: EdgeInsets.only(left: 10, right: 10, top: 10),
-                      child: bottomNavigationBar(context),
-                    ))
+                      child: bottomNavigationBar(context,handleTitle.currentIndex),
+                    ),
+                )
               ],
             ),
           ),
@@ -108,7 +109,7 @@ class _DemoNavigationState extends State<DemoNavigation> {
         ));
   }
 
-  Widget bottomNavigationBar(BuildContext context) {
+  Widget bottomNavigationBar(BuildContext context, int index) {
     var handleTitle = Provider.of<AppBarTitle>(context);
 
     return ClipPath(
@@ -120,6 +121,7 @@ class _DemoNavigationState extends State<DemoNavigation> {
         color: Colors.grey.shade200,
         buttonBackgroundColor: Colors.lightGreen,
         backgroundColor: Colors.white,
+        index: index,
         onTap: (value) {
           handleTitle.changeIndex(value);
         },
