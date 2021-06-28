@@ -50,16 +50,18 @@ class _DemoNavigationState extends State<DemoNavigation> {
           key: _scaffoldKey,
           appBar: handleTitle.currentIndex == 0
               ? AppBar(
+            backgroundColor: Colors.lightGreen,
             title: Text('Favourites'),
           )
               : handleTitle.currentIndex == 1
               ? AppBar(
+            backgroundColor: Colors.lightGreen,
             title: Text('Help'),
           )
               : handleTitle.currentIndex == 3
-              ? AppBar(title: Text('Message'))
+              ? AppBar(title: Text('Message'),backgroundColor: Colors.lightGreen,)
               : handleTitle.currentIndex == 4
-              ? AppBar(title: Text('Profile'))
+              ? AppBar(title: Text('Profile'),backgroundColor: Colors.lightGreen,)
               : AppBar(
             leading: handleTitle.currentScreen ==
                 'home-screen'
@@ -78,6 +80,7 @@ class _DemoNavigationState extends State<DemoNavigation> {
             title: handleTitle.currentScreen == 'home-screen'
                 ? Text('Home')
                 : Text(handleTitle.currentScreen),
+            backgroundColor: Colors.lightGreen,
           ),
           body: AnimatedSwitcher(
             duration: const Duration(milliseconds: 200),
